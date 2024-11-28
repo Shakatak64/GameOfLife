@@ -10,7 +10,7 @@ public partial class Plant : LifeForm {
     [ObservableProperty]
     private float seedRadius;
 
-    public Plant(Point location, uint health, float rootRadius, float seedRadius) : base(location, health) {
+    public Plant(Point location, uint health, uint energy, float rootRadius, float seedRadius) : base(location, health, energy) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
     }
@@ -21,6 +21,6 @@ public partial class Plant : LifeForm {
         double radius = rng.NextDouble() * SeedRadius;
         double angle = rng.NextDouble() * 2*Math.PI;
         Point location = new Point(Location.X+radius*Math.Cos(angle), Location.Y+radius*Math.Sin(angle));
-        return new Plant(location, 20, 1, 10);
+        return new Plant(location, 20, 10, 1, 10);
     }
 }

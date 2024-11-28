@@ -11,7 +11,7 @@ public enum Gender
 	MALE,FEMALE
 }
 
-public partial class Animal : LifeForm
+public abstract partial class Animal : LifeForm
 {
 	[ObservableProperty]
 	private int visionRadius;
@@ -30,7 +30,7 @@ public partial class Animal : LifeForm
 
 
 	
-	public Animal(Point location, uint health, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health)
+	public Animal(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health, energy)
 	{
 		this.contactRadius = contactRadius;
 		this.visionRadius = visionRadius;
@@ -64,10 +64,5 @@ public partial class Animal : LifeForm
 		return base.counter == NextBirth & Gender == Gender.FEMALE;
 	}
 
-	public Animal GiveBirth()
-	{
-		Random r = new Random();
-		if(r.Next() == 0) return new Animal(Location, 100, visionRadius, contactRadius, Gender.MALE, ReproductionTime);
-		else return new Animal(Location, 100, visionRadius, contactRadius, Gender.FEMALE, ReproductionTime);
-	}
+	public abstract Animal GiveBirth();
 }

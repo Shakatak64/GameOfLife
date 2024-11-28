@@ -1,5 +1,6 @@
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Diagnostics.Metrics;
 
 namespace gol.ViewModels;
 
@@ -9,10 +10,17 @@ public abstract partial class GameObject : ViewModelBase
     [ObservableProperty]
     private Point _location;
 
+    [ObservableProperty]
+    private int ticks = 0;
+
+
     protected GameObject(Point location)
     {
         Location = location;
     }
 
-    public abstract void Tick();
+    public virtual void Tick()
+    {
+        Ticks++;
+    }
 }

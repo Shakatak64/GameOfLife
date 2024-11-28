@@ -12,11 +12,9 @@ public abstract partial class LifeForm : GameObject {
 
     protected int counter = 0;
 
-    public LifeForm(Point location, uint health) : base(location) {
-        this.health = health;
+    public LifeForm(Point location, uint health, uint energy) : base(location) {
+        this.health = health; 
+        this.energy = energy;
     }
 
-    public override void Tick() {
-        counter++;    
-    }
 }

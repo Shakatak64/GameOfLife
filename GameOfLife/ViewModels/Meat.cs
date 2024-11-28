@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 namespace gol.ViewModels;
 
-public abstract partial class Waste : GameObject {
+public abstract partial class Meat : GameObject {
 
-    public Waste(Point location) : base(location) {
+    public Meat(Point location) : base(location) {
     }
-
 
 }
