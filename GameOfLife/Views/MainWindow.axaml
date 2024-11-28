@@ -15,6 +15,9 @@
             <Setter Property="Canvas.Top" Value="{Binding Location.Y}" />
         </Style>
     </Window.Styles>
+	<Window.Background>
+		<ImageBrush Source="/Assets/bg.jpg" />
+	</Window.Background>
     <ItemsControl
         ItemsSource="{Binding GameObjects}"
         Width="{Binding Width, Mode=OneWay}"
@@ -27,11 +30,7 @@
         </ItemsControl.ItemsPanel>
 
         <ItemsControl.DataTemplates>
-            <DataTemplate DataType="{x:Type vm:Ball}">
-                <Image Width="64" Height="64"
-                    Source="/Assets/Ball.png" />
-            </DataTemplate>
-
-        </ItemsControl.DataTemplates>
+           
+		</ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>
