@@ -1,5 +1,5 @@
 using Avalonia;
-using CommunityToolkit.Mvvm.ComponentModel
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace gol.ViewModels;
 
