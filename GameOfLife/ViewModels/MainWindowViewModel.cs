@@ -5,8 +5,8 @@ namespace gol.ViewModels;
 
 public partial class MainWindowViewModel : GameBase
 {
-    public int Width { get; } = 800;
-    public int Height { get; } = 450;
+    public int Width { get; } = 1000;
+    public int Height { get; } = 1000;
 
     // Liste des objets à afficher
     public ObservableCollection<GameObject> GameObjects { get; } = new();

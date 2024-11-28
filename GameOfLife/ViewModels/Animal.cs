@@ -20,13 +20,17 @@ public partial class Animal : LifeForm
 	private Gender gender;
 
 	[ObservableProperty]
-	private int remainingReproductionCooldown;
+	private int reproductionTime;
+
+	[ObservableProperty]
+	private int nextBirth = 0;
 	
-	public Animal(Point location, int health, int visionRadius, int contactRadius, Gender gender) : base(location, health)
+	public Animal(Point location, int health, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health)
 	{
 		this.contactRadius = contactRadius;
 		this.visionRadius = visionRadius;
 		this.gender = gender;
+		this.reproductionTime = reproductionTime;
 
 	}
 
@@ -34,7 +38,28 @@ public partial class Animal : LifeForm
     {
         if (with is Animal)
 		{
-			//...
+			Animal withAnimal = (Animal) with;
+            if (withAnimal.Gender != Gender)
+			{
+				if(CanReproduce() && withAnimal.CanReproduce())
+				{
+
+				}
+			}
 		}
     }
+
+	public bool CanReproduce()
+	{
+		return base.counter > NextBirth; 
+	}
+
+	public new void Tick()
+	{
+		base.Tick();
+		if(CanReproduce() && Gender == Gender.FEMALE)
+		{
+			//naissance d'un petit
+		}	
+	}
 }

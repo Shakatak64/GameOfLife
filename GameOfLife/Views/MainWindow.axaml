@@ -16,7 +16,7 @@
         </Style>
     </Window.Styles>
 	<Window.Background>
-		<ImageBrush Source="/Assets/bg.jpg" />
+		<ImageBrush Source="/Assets/bg.png" />
 	</Window.Background>
     <ItemsControl
         ItemsSource="{Binding GameObjects}"
