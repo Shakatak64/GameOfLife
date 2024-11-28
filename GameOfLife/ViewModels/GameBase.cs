@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Avalonia.Threading;
 
 namespace gol.ViewModels;
@@ -9,6 +10,7 @@ public abstract class GameBase: ViewModelBase
 {
     public const int TicksPerSecond = 60;
     private readonly DispatcherTimer _timer = new() { Interval = new TimeSpan(0, 0, 0, 0, 1000 / TicksPerSecond) };
+    private List<LifeForm> lifeForms = new List<LifeForm>();
 
     protected GameBase()
     {
@@ -20,8 +22,17 @@ public abstract class GameBase: ViewModelBase
 
     private void DoTick()
     {
+        foreach (LifeForm lifeForm in lifeForms)
+        {
+            lifeForm.Tick();
+        }
         Tick();
         CurrentTick++;
+    }
+
+    public void addLifeForm(LifeForm lifeForm)
+    {
+        lifeForms.Add(lifeForm);
     }
 
     protected abstract void Tick();

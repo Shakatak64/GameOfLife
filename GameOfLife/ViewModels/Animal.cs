@@ -1,5 +1,8 @@
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+
 
 namespace gol.ViewModels;
 
@@ -24,8 +27,10 @@ public partial class Animal : LifeForm
 
 	[ObservableProperty]
 	private int nextBirth = 0;
+
+
 	
-	public Animal(Point location, int health, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health)
+	public Animal(Point location, uint health, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health)
 	{
 		this.contactRadius = contactRadius;
 		this.visionRadius = visionRadius;
@@ -34,7 +39,7 @@ public partial class Animal : LifeForm
 
 	}
 
-    public void Reproduce(LifeForm with)
+    public void HaveSxx(LifeForm with)
     {
         if (with is Animal)
 		{
@@ -43,7 +48,7 @@ public partial class Animal : LifeForm
 			{
 				if(CanReproduce() && withAnimal.CanReproduce())
 				{
-
+					NextBirth = base.counter + ReproductionTime;
 				}
 			}
 		}
@@ -54,12 +59,21 @@ public partial class Animal : LifeForm
 		return base.counter > NextBirth; 
 	}
 
+	public bool CanGiveBirth()
+	{
+		return base.counter == NextBirth & Gender == Gender.FEMALE;
+	}
+
+	public Animal GiveBirth()
+	{
+		Random r = new Random();
+		if(r.Next() == 0) return new Animal(Location, 100, visionRadius, contactRadius, Gender.MALE, ReproductionTime);
+		else return new Animal(Location, 100, visionRadius, contactRadius, Gender.FEMALE, ReproductionTime);
+	}
+
 	public new void Tick()
 	{
 		base.Tick();
-		if(CanReproduce() && Gender == Gender.FEMALE)
-		{
-			//naissance d'un petit
-		}	
+		
 	}
 }
