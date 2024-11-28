@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace gol.ViewModels;
 
-public class Animal : LifeForm
+public partial class Animal : LifeForm
 {
 	[ObservableProperty]
 	private int visionRadius;

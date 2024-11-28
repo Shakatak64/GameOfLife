@@ -30,14 +30,7 @@
         </ItemsControl.ItemsPanel>
 
         <ItemsControl.DataTemplates>
-            <DataTemplate DataType="{x:Type vm:Ball}">
-                <Image Width="64" Height="64"
-                    Source="/Assets/Ball.png" />
-            </DataTemplate>
-			<DataTemplate DataType="{x:Type vm:Ball}">
-				<TextBlock FontSize="24" Text="coucou"/>
-			</DataTemplate>
-
-        </ItemsControl.DataTemplates>
+           
+		</ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>
