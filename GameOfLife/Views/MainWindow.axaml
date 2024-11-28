@@ -30,7 +30,21 @@
         </ItemsControl.ItemsPanel>
 
         <ItemsControl.DataTemplates>
-           
+			<DataTemplate DataType="{x:Type vm:Waste}">
+				<Image Width="64" Height="64" Source="/Assets/waste.png" />
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vm:Meat}">
+				<Image Width="64" Height="64" Source="/Assets/meat.png" />
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vm:Plant}">
+				<Image Width="64" Height="64" Source="/Assets/plant.png" />
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vm:Herbivore}">
+				<Image Width="64" Height="64" Source="/Assets/sheep.png" />
+			</DataTemplate>
+			<DataTemplate DataType="{x:Type vm:Carnivore}">
+				<Image Width="64" Height="64" Source="/Assets/wolf.png" />
+			</DataTemplate>
 		</ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>
