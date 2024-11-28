@@ -10,7 +10,7 @@ public partial class Plant : LifeForm {
     [ObservableProperty]
     private float seedRadius;
 
-    public Plant(Point location, int health, float rootRadius, float seedRadius) : base(location, health) {
+    public Plant(Point location, uint health, float rootRadius, float seedRadius) : base(location, health) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
     }
