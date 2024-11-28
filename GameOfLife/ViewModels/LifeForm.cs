@@ -7,6 +7,8 @@ namespace gol.ViewModels;
 public abstract partial class LifeForm : GameObject {
     [ObservableProperty]
     private uint health;
+    [ObservableProperty]
+    private uint energy;
 
     protected int counter = 0;
 
