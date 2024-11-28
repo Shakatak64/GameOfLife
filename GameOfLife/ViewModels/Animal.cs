@@ -6,14 +6,14 @@ namespace gol.ViewModels;
 public class Animal : LifeForm
 {
 	[ObservableProperty]
-	private int visionZone;
+	private int visionRadius;
 
 	[ObservableProperty]
-	private int contactZone;
+	private int contactRadius;
 
-	public Animal(Point location, int health, int visionZone, int contactZone) : base(location, health)
+	public Animal(Point location, int health, int visionRadius, int contactRadius) : base(location, health)
 	{
-		this.contactZone = contactZone;
-		this.visionZone = visionZone;
+		this.contactRadius = contactRadius;
+		this.visionRadius = visionRadius;
 	}
 }
