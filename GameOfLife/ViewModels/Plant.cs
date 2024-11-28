@@ -14,4 +14,8 @@ public partial class Plant : LifeForm {
         this.seedRadius = seedRadius;
     }
 
+    public void Reproduce()
+    {
+        
+    }
 }

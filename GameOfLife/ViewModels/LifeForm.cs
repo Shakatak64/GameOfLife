@@ -13,8 +13,6 @@ public abstract partial class LifeForm : GameObject {
         this.health = health;
     }
 
-    public abstract void Reproduce(LifeForm with);
-
     public void Tick() {
         counter++;    
     }

@@ -34,7 +34,7 @@ public partial class Animal : LifeForm
 
 	}
 
-    public override void Reproduce(LifeForm with)
+    public void Reproduce(LifeForm with)
     {
         if (with is Animal)
 		{
