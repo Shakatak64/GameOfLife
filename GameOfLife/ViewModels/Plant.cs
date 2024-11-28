@@ -14,11 +14,8 @@ public partial class Plant : LifeForm {
         this.seedRadius = seedRadius;
     }
 
-    public override void Reproduce(LifeForm with)
+    public void Reproduce()
     {
-        if (with is Plant)
-        {
-            //...
-        }
+        
     }
 }
