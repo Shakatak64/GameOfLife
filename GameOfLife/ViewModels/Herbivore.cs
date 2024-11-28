@@ -14,6 +14,25 @@ public partial class Herbivore : Animal
 		
 	}
 
+    public void eat(List<GameObject> objects)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if (obj is Plant)
+            {
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
+                {
+                    Plant plt = (Plant)obj;
+                    if (Health < 100)
+                    {
+                        plt.Health -= 20;
+                        Health += 20;
+                    }
+                }
+            }
+        }
+    }
+
     public override Animal GiveBirth()
     {
         Random r = new Random();
