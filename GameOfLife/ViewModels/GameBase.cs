@@ -10,7 +10,7 @@ public abstract class GameBase: ViewModelBase
 {
     public const int TicksPerSecond = 60;
     private readonly DispatcherTimer _timer = new() { Interval = new TimeSpan(0, 0, 0, 0, 1000 / TicksPerSecond) };
-    private List<LifeForm> lifeForms = new List<LifeForm>();
+    private List<GameObject> objects = new List<GameObject>();
 
     protected GameBase()
     {
@@ -22,9 +22,9 @@ public abstract class GameBase: ViewModelBase
 
     private void DoTick()
     {
-        foreach (LifeForm lifeForm in lifeForms)
+        foreach (GameObject obj in objects)
         {
-            lifeForm.Tick();
+            obj.Tick();
         }
         Tick();
         CurrentTick++;

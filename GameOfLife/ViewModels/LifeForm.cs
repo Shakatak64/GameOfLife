@@ -14,7 +14,7 @@ public abstract partial class LifeForm : GameObject {
         this.health = health;
     }
 
-    public void Tick() {
+    public override void Tick() {
         counter++;    
     }
 }

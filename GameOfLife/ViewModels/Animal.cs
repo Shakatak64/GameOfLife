@@ -70,10 +70,4 @@ public partial class Animal : LifeForm
 		if(r.Next() == 0) return new Animal(Location, 100, visionRadius, contactRadius, Gender.MALE, ReproductionTime);
 		else return new Animal(Location, 100, visionRadius, contactRadius, Gender.FEMALE, ReproductionTime);
 	}
-
-	public new void Tick()
-	{
-		base.Tick();
-		
-	}
 }
