@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Avalonia.Input;
 
-namespace Pong;
+namespace gol;
 
 // Contient un ensemble (HashSet) qui contient l'ensemble des touches enfoncées
 internal static class Keyboard
