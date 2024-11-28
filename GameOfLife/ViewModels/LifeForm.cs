@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace gol.ViewModels;
 
-public partial class LifeForm : GameObject {
+public abstract partial class LifeForm : GameObject {
     [ObservableProperty]
     private int health;
 
@@ -12,6 +12,8 @@ public partial class LifeForm : GameObject {
     public LifeForm(Point location, int health) : base(location) {
         this.health = health;
     }
+
+    public abstract void Reproduce();
 
     public void Tick() {
         counter++;    
