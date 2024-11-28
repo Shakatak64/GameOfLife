@@ -7,7 +7,7 @@
         x:Class="gol.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         SizeToContent="WidthAndHeight"
-        Title="gol">
+        Title="Game Of Life">
 
     <Window.Styles>
         <Style Selector="ItemsControl > ContentPresenter" x:DataType="vm:GameObject">
