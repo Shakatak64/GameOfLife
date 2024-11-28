@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace Pong;
+namespace gol;
 
 sealed class Program
 {

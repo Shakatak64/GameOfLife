@@ -1,7 +1,7 @@
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Pong.ViewModels;
+namespace gol.ViewModels;
 
 public partial class Ball : GameObject {
     [ObservableProperty]

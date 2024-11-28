@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System.Collections.ObjectModel;
 
-namespace Pong.ViewModels;
+namespace gol.ViewModels;
 
 public partial class MainWindowViewModel : GameBase
 {

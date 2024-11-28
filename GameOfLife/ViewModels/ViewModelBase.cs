@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Pong.ViewModels;
+namespace gol.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

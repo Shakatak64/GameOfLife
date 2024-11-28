@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Pong.ViewModels;
+using gol.ViewModels;
 
-namespace Pong;
+namespace gol;
 
 public class ViewLocator : IDataTemplate
 {

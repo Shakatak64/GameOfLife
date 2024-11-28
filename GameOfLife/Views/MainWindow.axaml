@@ -1,13 +1,13 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:Pong.ViewModels"
+        xmlns:vm="using:gol.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        x:Class="Pong.Views.MainWindow"
+        x:Class="gol.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         SizeToContent="WidthAndHeight"
-        Title="Pong">
+        Title="gol">
 
     <Window.Styles>
         <Style Selector="ItemsControl > ContentPresenter" x:DataType="vm:GameObject">

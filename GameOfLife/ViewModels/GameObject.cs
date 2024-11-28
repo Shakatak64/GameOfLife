@@ -1,7 +1,7 @@
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Pong.ViewModels;
+namespace gol.ViewModels;
 
 // représente un objet affichable sur l'interface
 public abstract partial class GameObject : ViewModelBase

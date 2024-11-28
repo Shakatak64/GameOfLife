@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Pong.ViewModels;
-using Pong.Views;
+using gol.ViewModels;
+using gol.Views;
 
-namespace Pong;
+namespace gol;
 
 public partial class App : Application
 {

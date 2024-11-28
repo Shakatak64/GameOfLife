@@ -1,7 +1,7 @@
 using System;
 using Avalonia.Threading;
 
-namespace Pong.ViewModels;
+namespace gol.ViewModels;
 
 // Impose d'implémenter la méthode Tick() et s'occupe de l'appeler 60 fois par seconde.
 // Cela sert de "boucle" principale pour notre application graphique.
