@@ -32,7 +32,7 @@ public abstract class GameBase: ViewModelBase
 
     public void addLifeForm(LifeForm lifeForm)
     {
-        lifeForms.Add(lifeForm);
+      objects.Add(lifeForm);
     }
 
     protected abstract void Tick();
