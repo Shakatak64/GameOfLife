@@ -2,6 +2,7 @@ using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Media;
 
 
 namespace gol.ViewModels;
@@ -28,16 +29,24 @@ public abstract partial class Animal : LifeForm
 	[ObservableProperty]
 	private int nextBirth = 0;
 
+	[ObservableProperty]
+	private string soundPath;
+
+    public SoundPlayer sound;
+
+
 
 	
-	public Animal(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health, energy)
+	public Animal(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
-		this.contactRadius = contactRadius;
+        this.contactRadius = contactRadius;
 		this.visionRadius = visionRadius;
 		this.gender = gender;
 		this.reproductionTime = reproductionTime;
-
-	}
+		SoundPath = soundPath;
+		sound = new SoundPlayer(soundPath);
+		playSound();
+    }
 
     public void HaveSxx(LifeForm with)
     {
@@ -63,6 +72,11 @@ public abstract partial class Animal : LifeForm
 	{
 		return base.counter == NextBirth & Gender == Gender.FEMALE;
 	}
+
+	public void playSound()
+	{
+        sound.Play();
+    }
 
 	public abstract Animal GiveBirth();
 }
