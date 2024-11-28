@@ -8,8 +8,8 @@ namespace gol.ViewModels;
 
 public partial class Carnivore : Animal
 {
-	
-	public Carnivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime) : base(location, health, energy, visionRadius, contactRadius, gender, reproductionTime)
+
+	public Carnivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
 	{
 		
 	}
@@ -17,7 +17,7 @@ public partial class Carnivore : Animal
 	public override Animal GiveBirth()
 	{
 		Random r = new Random();
-		if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime);
-		else return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime);
+		if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
+		else return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, SoundPath);
 	}
 }
