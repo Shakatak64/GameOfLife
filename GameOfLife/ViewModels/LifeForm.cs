@@ -17,4 +17,10 @@ public abstract partial class LifeForm : GameObject {
         this.energy = energy;
     }
 
+    public void decreaseHealth(uint amount)
+    {
+        if(health > 0) health -= amount;
+        else energy -= amount;
+    }
+
 }
