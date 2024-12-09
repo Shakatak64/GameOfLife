@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Avalonia.Controls.Shapes;
 
 namespace gol.ViewModels;
 

@@ -37,7 +37,10 @@
 				<Image Width="64" Height="64" Source="/Assets/meat.png" />
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Plant}">
-				<Image Width="64" Height="64" Source="/Assets/plant.png" />
+				<Canvas Background="AliceBlue" Margin="20">
+				    <Image Width="64" Height="64" Source="/Assets/plant.png" />
+				    <Ellipse Height="16" Width="54" />
+				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Herbivore}">
 				<Image Width="64" Height="64" Source="/Assets/sheep.png" />
@@ -45,6 +48,7 @@
 			<DataTemplate DataType="{x:Type vm:Carnivore}">
 				<Image Width="64" Height="64" Source="/Assets/wolf.png" />
 			</DataTemplate>
+			
 		</ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>
