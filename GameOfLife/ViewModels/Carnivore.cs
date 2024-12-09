@@ -9,7 +9,7 @@ namespace gol.ViewModels;
 public partial class Carnivore : Animal
 {
 
-	public Carnivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
+	public Carnivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 5 , health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
 	{
 		
 	}
@@ -23,15 +23,8 @@ public partial class Carnivore : Animal
             {
                 if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
                 {
-                    objects.Remove(obj);
-                    if (Health >= 100)
-                    {
-                        Energy++;
-                    }
-                    else
-                    {
-                        Health += 20;
-                    }
+                    Herbivore herbivore = (Herbivore)obj;
+                    herbivore.Health -= 20;
                 }
             }
         }

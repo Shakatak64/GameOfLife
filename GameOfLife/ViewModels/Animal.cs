@@ -2,6 +2,7 @@ using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Media;
 
 
@@ -27,6 +28,9 @@ public abstract partial class Animal : LifeForm
 	private int reproductionTime;
 
 	[ObservableProperty]
+	private int speed;
+
+	[ObservableProperty]
 	private int nextBirth = 0;
 
 	[ObservableProperty]
@@ -37,8 +41,9 @@ public abstract partial class Animal : LifeForm
 
 
 	
-	public Animal(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
+	public Animal(Point location, int speed, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
+        this.speed = speed;
         this.contactRadius = contactRadius;
 		this.visionRadius = visionRadius;
 		this.gender = gender;
@@ -81,6 +86,28 @@ public abstract partial class Animal : LifeForm
 	public void playSound()
 	{
         sound.Play();
+    }
+
+
+	public Point DefineTarget(ObservableCollection<GameObject> objects)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if((this is Carnivore & obj is Herbivore) | (this is Herbivore && obj is Plant))
+			{
+				if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
+				{
+					return obj.Location;
+				}
+            } 
+        }
+        return new Point(128,128);
+    }
+
+    public void Move(Point target)
+	{
+		Vector direction = target-Location;
+		Location += direction.Normalize()*Speed;
     }
 
 	public abstract Animal GiveBirth();

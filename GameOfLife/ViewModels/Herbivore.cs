@@ -9,7 +9,7 @@ namespace gol.ViewModels;
 public partial class Herbivore : Animal
 {
 	
-	public Herbivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
+	public Herbivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
 	{
 		
 	}
