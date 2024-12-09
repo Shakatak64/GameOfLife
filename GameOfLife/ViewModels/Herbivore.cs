@@ -29,6 +29,7 @@ public partial class Herbivore : Animal
                     {
                         objects.Remove(obj);
                         Health += 20;
+                        playEatSound();
                     }
                 }
             }
