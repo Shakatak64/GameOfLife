@@ -13,7 +13,7 @@ public partial class MainWindowViewModel : GameBase
     public ObservableCollection<GameObject> GameObjects { get; } = new();
 
     public MainWindowViewModel() {
-        GameObjects.Add(new Plant(new Avalonia.Point(600, 600), 100, 100, 200, 200));
+        GameObjects.Add(new Plant(new Avalonia.Point(600, 600), 100, 100, 100, 200));
     }
 
     protected override void Tick()
