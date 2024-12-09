@@ -21,8 +21,8 @@ public partial class Plant : LifeForm {
     public Plant(Point location, uint health, uint energy, float rootRadius, float seedRadius) : base(location, health, energy) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
-        this.rootRenderDelta = -rootRadius / 2 + 35;
-        this.seedRenderDelta = -seedRadius / 2 + 35;
+        this.rootRenderDelta = -rootRadius / 2 + 3;
+        this.seedRenderDelta = -seedRadius / 2 + 3;
     }
 
     public override void Tick()
@@ -47,8 +47,8 @@ public partial class Plant : LifeForm {
     {
         RootRadius += 1.5f;
         SeedRadius *= 1.05f;
-        RootRenderDelta = -RootRadius / 2 + 35;
-        SeedRenderDelta = -SeedRadius / 2 + 35;
+        RootRenderDelta = -RootRadius / 2;
+        SeedRenderDelta = -SeedRadius / 2;
     }
 
     public void eat(List<GameObject> objects)
