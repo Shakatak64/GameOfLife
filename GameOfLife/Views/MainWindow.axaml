@@ -37,9 +37,18 @@
 				<Image Width="64" Height="64" Source="/Assets/meat.png" />
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Plant}">
-				<Canvas Background="AliceBlue" Margin="20">
-				    <Image Width="64" Height="64" Source="/Assets/plant.png" />
-				    <Ellipse Height="16" Width="54" />
+				<Canvas>
+					<Ellipse Height="{Binding SeedRadius, Mode=OneWay}" Width="{Binding SeedRadius, Mode=OneWay}" Fill="Green">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="{Binding SeedRenderDelta, Mode=OneWay}" Y="{Binding SeedRenderDelta, Mode=OneWay}" />
+						</Ellipse.RenderTransform>
+					</Ellipse>
+					<Ellipse Height="{Binding RootRadius, Mode=OneWay}" Width="{Binding RootRadius, Mode=OneWay}" Fill="Brown">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="{Binding RootRenderDelta, Mode=OneWay}" Y="{Binding RootRenderDelta, Mode=OneWay}" />
+						</Ellipse.RenderTransform>
+					</Ellipse>
+					<Image Width="64" Height="64" Source="/Assets/plant.png" />
 				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Herbivore}">

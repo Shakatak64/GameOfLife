@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Avalonia.Controls.Shapes;
+using Avalonia.Media;
 
 namespace gol.ViewModels;
 
@@ -12,10 +13,24 @@ public partial class Plant : LifeForm {
     private float rootRadius;
     [ObservableProperty]
     private float seedRadius;
+    [ObservableProperty]
+    private float rootRenderDelta;
+    [ObservableProperty]
+    private float seedRenderDelta;
+
+    [ObservableProperty]
+    private bool debugAnimDir = false;
 
     public Plant(Point location, uint health, uint energy, float rootRadius, float seedRadius) : base(location, health, energy) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
+        this.rootRenderDelta = -rootRadius / 2 + 35;
+        this.seedRenderDelta = -seedRadius / 2 + 35;
+    }
+
+    public override void Tick()
+    {
+        //base.Ticks++;
     }
 
     public Plant Reproduce()
@@ -31,6 +46,8 @@ public partial class Plant : LifeForm {
     {
         RootRadius += 1.2f;
         SeedRadius *= 1.2f;
+        RootRenderDelta = -RootRadius / 2 + 35;
+        SeedRenderDelta = -SeedRadius / 2 + 35;
     }
 
     public void eat(List<GameObject> objects)
