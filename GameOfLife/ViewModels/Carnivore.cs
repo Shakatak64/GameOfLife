@@ -2,6 +2,7 @@ using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 
 namespace gol.ViewModels;
@@ -9,13 +10,13 @@ namespace gol.ViewModels;
 public partial class Carnivore : Animal
 {
 
-	public Carnivore(Point location, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4 , health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
+	public Carnivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4 , health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
 	{
 		
 	}
 
 
-    public void eat(List<GameObject> objects)
+    public void eat(ObservableCollection<GameObject> objects)
     {
         foreach (GameObject obj in objects)
         {

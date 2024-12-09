@@ -43,7 +43,7 @@ public abstract partial class Animal : LifeForm
 
 
 	
-	public Animal(Point location, int speed, uint health, uint energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
+	public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
         this.speed = speed;
         this.contactRadius = contactRadius;

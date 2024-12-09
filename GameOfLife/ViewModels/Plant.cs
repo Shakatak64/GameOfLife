@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Avalonia.Controls.Shapes;
 using Avalonia.Media;
+using System.Collections.ObjectModel;
 
 namespace gol.ViewModels;
 
@@ -18,7 +19,7 @@ public partial class Plant : LifeForm {
     [ObservableProperty]
     private float seedRenderDelta;
 
-    public Plant(Point location, uint health, uint energy, float rootRadius, float seedRadius) : base(location, health, energy) {
+    public Plant(Point location, int health, int energy, float rootRadius, float seedRadius) : base(location, health, energy) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
         this.rootRenderDelta = -rootRadius / 2 + 35;
@@ -51,7 +52,7 @@ public partial class Plant : LifeForm {
         SeedRenderDelta = -SeedRadius / 2 + 35;
     }
 
-    public void eat(List<GameObject> objects)
+    public void eat(ObservableCollection<GameObject> objects)
     {
         foreach (GameObject obj in objects)
         {
