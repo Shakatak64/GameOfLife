@@ -48,6 +48,11 @@ public abstract partial class Animal : LifeForm
 		playSound();
     }
 
+	public Waste Poop()
+	{
+		return new Waste(Location);
+	}
+
     public void HaveSxx(LifeForm with)
     {
         if (with is Animal)

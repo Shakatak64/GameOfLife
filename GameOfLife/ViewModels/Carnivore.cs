@@ -14,7 +14,30 @@ public partial class Carnivore : Animal
 		
 	}
 
-	public override Animal GiveBirth()
+
+    public void eat(List<GameObject> objects)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if (obj is Herbivore)
+            {
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
+                {
+                    objects.Remove(obj);
+                    if (Health >= 100)
+                    {
+                        Energy++;
+                    }
+                    else
+                    {
+                        Health += 20;
+                    }
+                }
+            }
+        }
+    }
+
+    public override Animal GiveBirth()
 	{
 		Random r = new Random();
 		if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
