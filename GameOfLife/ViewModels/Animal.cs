@@ -38,6 +38,8 @@ public abstract partial class Animal : LifeForm
 
     public SoundPlayer sound;
 
+	private Point randomPosition;
+
 
 
 	
@@ -51,6 +53,9 @@ public abstract partial class Animal : LifeForm
 		SoundPath = soundPath;
 		sound = new SoundPlayer(soundPath);
 		playSound();
+
+		Random r = new Random();
+        randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0,1000));
     }
 
 	public Waste Poop()
@@ -101,14 +106,27 @@ public abstract partial class Animal : LifeForm
 				}
             } 
         }
-        return new Point(128,128);
+		Random r = new Random();
+		return randomPosition;
     }
 
     public void Move(Point target)
 	{
 		Vector direction = target-Location;
+		if (Math.Abs(direction.X) < 1 | Math.Abs(direction.Y) < 1) return;
 		Location += direction.Normalize()*Speed;
     }
 
 	public abstract Animal GiveBirth();
+
+	public override void Tick()
+    {
+        base.Tick();
+		if(Ticks % 100 == 0)
+		{
+			Random r = new Random();
+            randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0, 1000));
+        }
+    }
 }
+
