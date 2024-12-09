@@ -23,7 +23,7 @@ public partial class Plant : LifeForm {
         double radius = rng.NextDouble() * SeedRadius;
         double angle = rng.NextDouble() * 2*Math.PI;
         Point location = new Point(Location.X+radius*Math.Cos(angle), Location.Y+radius*Math.Sin(angle));
-        return new Plant(location, 20, 10, 1, 10);
+        return new Plant(location, 100, 100, 1, 10);
     }
 
     private void grow()
@@ -41,13 +41,13 @@ public partial class Plant : LifeForm {
                 if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(RootRadius, 2))
                 {
                     objects.Remove(obj);
-                    if (Health >= 20)
+                    if (Health >= 100)
                     {
                         grow();
                     }
                     else
                     {
-                        Health += 5;
+                        Health += 20;
                     }
                 }
             }
