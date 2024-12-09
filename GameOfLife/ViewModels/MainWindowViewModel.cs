@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -9,11 +10,14 @@ public partial class MainWindowViewModel : GameBase
     public int Width { get; } = 1000;
     public int Height { get; } = 1000;
 
+    private Random r;
+
     // Liste des objets à afficher
     public ObservableCollection<GameObject> GameObjects { get; } = new();
 
     public MainWindowViewModel()
     {
+        r = new Random();
         GameObjects.Add(new Plant(new Avalonia.Point(120, 600), 100, 100, 100, 100));
         GameObjects.Add(new Herbivore(new Avalonia.Point(700, 600), 100, 100, 500, 100, Gender.MALE, 100, @"C:\Users\Hugo\source\repos\GameOfLifeVicto\GameOfLife\Assets\sheep.wav"));
         GameObjects.Add(new Carnivore(new Avalonia.Point(200, 0), 100, 100, 1000, 100, Gender.MALE, 100, @"C:\Users\Hugo\source\repos\GameOfLifeVicto\GameOfLife\Assets\sheep.wav"));
@@ -29,6 +33,10 @@ public partial class MainWindowViewModel : GameBase
                 Animal animal = (Animal)obj;
                 animal.Move(animal.DefineTarget(GameObjects));
             }
+        }
+        if(CurrentTick % 10 == 0)
+        {
+            GameObjects.Add(new Waste(new Avalonia.Point(r.NextInt64(0,1000), r.NextInt64(0,1000))));
         }
     }
 
