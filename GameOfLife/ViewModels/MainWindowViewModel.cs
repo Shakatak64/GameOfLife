@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace gol.ViewModels;
 
@@ -25,7 +26,7 @@ public partial class MainWindowViewModel : GameBase
 
     protected override void Tick()
     {
-        foreach (GameObject obj in GameObjects)
+        foreach (GameObject obj in GameObjects.ToList())
         {
             obj.Tick();
             if (obj is Animal)
@@ -33,7 +34,13 @@ public partial class MainWindowViewModel : GameBase
                 Animal animal = (Animal)obj;
                 animal.Move(animal.DefineTarget(GameObjects));
             }
+            else if (obj is Plant)
+            {
+                Plant plant = (Plant)obj;
+                plant.eat(GameObjects);
+            }
         }
+
         if(CurrentTick % 10 == 0)
         {
             GameObjects.Add(new Waste(new Avalonia.Point(r.NextInt64(0,1000), r.NextInt64(0,1000))));

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Avalonia.Controls.Shapes;
 using Avalonia.Media;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace gol.ViewModels;
 
@@ -51,9 +53,9 @@ public partial class Plant : LifeForm {
         SeedRenderDelta = -SeedRadius / 2;
     }
 
-    public void eat(List<GameObject> objects)
+    public void eat(ObservableCollection<GameObject> objects)
     {
-        foreach (GameObject obj in objects)
+        foreach (GameObject obj in objects.ToList())
         {
             if (obj is Waste)
             {
