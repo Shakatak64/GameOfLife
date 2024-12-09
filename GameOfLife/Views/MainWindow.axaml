@@ -38,12 +38,12 @@
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Plant}">
 				<Canvas>
-					<Ellipse Height="{Binding SeedRadius, Mode=OneWay}" Width="{Binding SeedRadius, Mode=OneWay}" Fill="Green">
+					<Ellipse Height="{Binding SeedRadius, Mode=OneWay}" Width="{Binding SeedRadius, Mode=OneWay}" Fill="Green" Opacity="0.6">
 						<Ellipse.RenderTransform>
 							<TranslateTransform X="{Binding SeedRenderDelta, Mode=OneWay}" Y="{Binding SeedRenderDelta, Mode=OneWay}" />
 						</Ellipse.RenderTransform>
 					</Ellipse>
-					<Ellipse Height="{Binding RootRadius, Mode=OneWay}" Width="{Binding RootRadius, Mode=OneWay}" Fill="Brown">
+					<Ellipse Height="{Binding RootRadius, Mode=OneWay}" Width="{Binding RootRadius, Mode=OneWay}" Fill="Brown" Opacity="0.5">
 						<Ellipse.RenderTransform>
 							<TranslateTransform X="{Binding RootRenderDelta, Mode=OneWay}" Y="{Binding RootRenderDelta, Mode=OneWay}" />
 						</Ellipse.RenderTransform>

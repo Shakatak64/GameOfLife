@@ -18,9 +18,6 @@ public partial class Plant : LifeForm {
     [ObservableProperty]
     private float seedRenderDelta;
 
-    [ObservableProperty]
-    private bool debugAnimDir = false;
-
     public Plant(Point location, uint health, uint energy, float rootRadius, float seedRadius) : base(location, health, energy) {
         this.rootRadius = rootRadius;
         this.seedRadius = seedRadius;
@@ -30,7 +27,11 @@ public partial class Plant : LifeForm {
 
     public override void Tick()
     {
-        //base.Ticks++;
+        base.Ticks++;
+        if (base.Ticks % 1000 == 0) // very slow
+        {
+            grow();
+        }
     }
 
     public Plant Reproduce()
@@ -44,8 +45,8 @@ public partial class Plant : LifeForm {
 
     private void grow()
     {
-        RootRadius += 1.2f;
-        SeedRadius *= 1.2f;
+        RootRadius += 1.5f;
+        SeedRadius *= 1.05f;
         RootRenderDelta = -RootRadius / 2 + 35;
         SeedRenderDelta = -SeedRadius / 2 + 35;
     }
