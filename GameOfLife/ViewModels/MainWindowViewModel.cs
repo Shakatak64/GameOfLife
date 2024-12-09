@@ -49,7 +49,13 @@ public partial class MainWindowViewModel : GameBase
                 }
 
             }
+            else if (obj is Plant)
+            {
+                Plant plant = (Plant)obj;
+                plant.eat(GameObjects);
+            }
         }
+
         if(CurrentTick % 10 == 0)
         {
             GameObjects.Add(new Waste(new Avalonia.Point(r.NextInt64(0,1000), r.NextInt64(0,1000))));

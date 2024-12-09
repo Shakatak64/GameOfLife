@@ -31,10 +31,18 @@
 
         <ItemsControl.DataTemplates>
 			<DataTemplate DataType="{x:Type vm:Waste}">
-				<Image Width="64" Height="64" Source="/Assets/waste.png" />
+				<Image Width="64" Height="64" Source="/Assets/waste.png">
+					<Image.RenderTransform>
+						<TranslateTransform X="-32" Y="-32" />
+					</Image.RenderTransform>
+				</Image>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Meat}">
-				<Image Width="64" Height="64" Source="/Assets/meat.png" />
+				<Image Width="64" Height="64" Source="/Assets/meat.png">
+					<Image.RenderTransform>
+						<TranslateTransform X="-32" Y="-32" />
+					</Image.RenderTransform>
+				</Image>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Plant}">
 				<Canvas>
@@ -48,14 +56,26 @@
 							<TranslateTransform X="{Binding RootRenderDelta, Mode=OneWay}" Y="{Binding RootRenderDelta, Mode=OneWay}" />
 						</Ellipse.RenderTransform>
 					</Ellipse>
-					<Image Width="64" Height="64" Source="/Assets/plant.png" />
+					<Image Width="64" Height="64" Source="/Assets/plant.png">
+						<Image.RenderTransform>
+							<TranslateTransform X="-32" Y="-32" />
+						</Image.RenderTransform>
+					</Image>
 				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Herbivore}">
-				<Image Width="64" Height="64" Source="/Assets/sheep.png" />
+				<Image Width="64" Height="64" Source="/Assets/sheep.png">
+					<Image.RenderTransform>
+						<TranslateTransform X="-32" Y="-32" />
+					</Image.RenderTransform>
+				</Image>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Carnivore}">
-				<Image Width="64" Height="64" Source="/Assets/wolf.png" />
+				<Image Width="64" Height="64" Source="/Assets/wolf.png">
+					<Image.RenderTransform>
+						<TranslateTransform X="-32" Y="-32" />
+					</Image.RenderTransform>
+				</Image>
 			</DataTemplate>
 			
 		</ItemsControl.DataTemplates>
