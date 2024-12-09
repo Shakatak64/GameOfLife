@@ -49,8 +49,8 @@ public partial class Plant : LifeForm {
     {
         RootRadius += 1.5f;
         SeedRadius *= 1.05f;
-        RootRenderDelta = -RootRadius / 2;
-        SeedRenderDelta = -SeedRadius / 2;
+        RootRenderDelta = -RootRadius / 2 + 3;
+        SeedRenderDelta = -SeedRadius / 2 + 3;
     }
 
     public void eat(ObservableCollection<GameObject> objects)
@@ -59,7 +59,7 @@ public partial class Plant : LifeForm {
         {
             if (obj is Waste)
             {
-                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(RootRadius, 2))
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(RootRadius / 2 + 10, 2)) // +10 arbitrary value to make nice on screen
                 {
                     objects.Remove(obj);
                     if (Health >= 100)
