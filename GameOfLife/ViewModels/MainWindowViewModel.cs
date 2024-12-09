@@ -13,7 +13,7 @@ public partial class MainWindowViewModel : GameBase
     public ObservableCollection<GameObject> GameObjects { get; } = new();
 
     public MainWindowViewModel() {
-        GameObjects.Add(new Herbivore(new Avalonia.Point(600, 600), 100, 100, 100, 100, Gender.MALE, 100, @"C:\Users\Hugo\source\repos\GameOfLifeVicto\GameOfLife\Assets\sheep.wav"));
+        GameObjects.Add(new Plant(new Avalonia.Point(600, 600), 100, 100, 100, 100));
     }
 
     protected override void Tick()
