@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 
 namespace gol.ViewModels;
@@ -18,14 +19,14 @@ public partial class Carnivore : Animal
 
     public void eat(ObservableCollection<GameObject> objects)
     {
-        foreach (GameObject obj in objects)
+        foreach (GameObject obj in objects.ToList())
         {
             if (obj is Herbivore)
             {
                 if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
                 {
                     Herbivore herbivore = (Herbivore)obj;
-                    herbivore.Health -= 20;
+                    herbivore.Health -= 10;
                 }
             }
         }

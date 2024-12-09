@@ -34,14 +34,14 @@ public partial class MainWindowViewModel : GameBase
                 Carnivore animal = (Carnivore) obj;
                 animal.Move(animal.DefineTarget(GameObjects));
 
-                if (CurrentTick % 10 == 0) animal.eat(GameObjects);
+                if (CurrentTick % 25 == 0) animal.eat(GameObjects);
             }
             else if (obj is Herbivore)
             {
                 Herbivore animal = (Herbivore)obj;
                 animal.Move(animal.DefineTarget(GameObjects));
 
-                if (CurrentTick % 10 == 0) animal.eat(GameObjects);
+                if (CurrentTick % 25 == 0) animal.eat(GameObjects);
                 System.Diagnostics.Debug.WriteLine(animal.Health);
                 if (animal.Health < 1) {
                     GameObjects.Remove(animal);

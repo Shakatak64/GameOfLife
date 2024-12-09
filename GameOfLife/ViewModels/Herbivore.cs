@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 
 namespace gol.ViewModels;
@@ -17,7 +18,7 @@ public partial class Herbivore : Animal
 
     public void eat(ObservableCollection<GameObject> objects)
     {
-        foreach (GameObject obj in objects)
+        foreach (GameObject obj in objects.ToList())
         {
             if (obj is Plant)
             {
@@ -26,7 +27,7 @@ public partial class Herbivore : Animal
                     Plant plt = (Plant)obj;
                     if (Health < 100)
                     {
-                        plt.Health -= 20;
+                        objects.Remove(obj);
                         Health += 20;
                     }
                 }
