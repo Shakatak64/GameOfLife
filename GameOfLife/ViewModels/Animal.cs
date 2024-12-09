@@ -40,10 +40,15 @@ public abstract partial class Animal : LifeForm
 
 	private Point randomPosition;
 
+	private string foodSoundPath = @"..\..\..\Assets\food.wav";
+	private SoundPlayer foodSound;
 
 
-	
-	public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
+
+
+
+
+    public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
         this.speed = speed;
         this.contactRadius = contactRadius;
@@ -52,6 +57,7 @@ public abstract partial class Animal : LifeForm
 		this.reproductionTime = reproductionTime;
 		SoundPath = soundPath;
 		sound = new SoundPlayer(soundPath);
+		foodSound = new SoundPlayer(foodSoundPath);
 		playSound();
 
 		Random r = new Random();
@@ -93,8 +99,11 @@ public abstract partial class Animal : LifeForm
         sound.Play();
     }
 
+	public void playEatSound() { 
+		foodSound.Play(); 
+	}
 
-	public Point DefineTarget(ObservableCollection<GameObject> objects)
+    public Point DefineTarget(ObservableCollection<GameObject> objects)
     {
         foreach (GameObject obj in objects)
         {

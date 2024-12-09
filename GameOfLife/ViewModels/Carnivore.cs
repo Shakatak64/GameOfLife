@@ -27,6 +27,7 @@ public partial class Carnivore : Animal
                 {
                     Herbivore herbivore = (Herbivore)obj;
                     herbivore.Health -= 10;
+                    playEatSound();
                 }
             }
         }
