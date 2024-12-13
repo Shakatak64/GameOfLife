@@ -53,6 +53,15 @@ public partial class MainWindowViewModel : GameBase
                 Plant plant = (Plant)obj;
                 plant.eat(GameObjects);
             }
+            else if (obj is Meat)
+            {
+                Meat meat = (Meat)obj;
+                if (meat.Ticks > 500)
+                {
+                    GameObjects.Remove(meat);
+                    GameObjects.Add(new Waste(meat.Location));
+                }
+            }
         }
 
         if(CurrentTick % 25 == 0)
