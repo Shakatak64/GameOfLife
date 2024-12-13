@@ -27,7 +27,8 @@ public partial class Herbivore : Animal
                     Plant plt = (Plant)obj;
                     if (Health < 100)
                     {
-                        objects.Remove(obj);
+                        //objects.Remove(obj);
+                        plt.Health -= 30;
                         Health += 20;
                         playEatSound();
                     }

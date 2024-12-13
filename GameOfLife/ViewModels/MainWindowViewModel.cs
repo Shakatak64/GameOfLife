@@ -70,6 +70,10 @@ public partial class MainWindowViewModel : GameBase
             {
                 Plant plant = (Plant)obj;
                 plant.eat(GameObjects);
+                if (plant.Health < 1)
+                {
+                    GameObjects.Remove(plant);
+                }
             }
             else if (obj is Meat)
             {
