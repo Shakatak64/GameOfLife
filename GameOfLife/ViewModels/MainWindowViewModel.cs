@@ -41,6 +41,7 @@ public partial class MainWindowViewModel : GameBase
                 Herbivore animal = (Herbivore)obj;
                 animal.Move(animal.DefineTarget(GameObjects));
 
+                // TO-DO: il faut utiliser les ticks propres de chaque animal
                 if (CurrentTick % 25 == 0) animal.eat(GameObjects);
                 if (animal.Health < 1) {
                     GameObjects.Remove(animal);

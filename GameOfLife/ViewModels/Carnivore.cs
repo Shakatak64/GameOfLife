@@ -30,6 +30,16 @@ public partial class Carnivore : Animal
                     playEatSound();
                 }
             }
+            if (obj is Meat)
+            {
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
+                {
+                    Meat meat = (Meat)obj;
+                    objects.Remove(meat);
+                    Health += 10;
+                    playEatSound();
+                }
+            }
         }
     }
 
