@@ -38,7 +38,7 @@ public abstract partial class Animal : LifeForm
 
     public SoundPlayer sound;
 
-	private Point randomPosition;
+	private Vector randomPosition;
 
 	private string foodSoundPath = @"..\..\..\Assets\food.wav";
 	private SoundPlayer foodSound;
@@ -61,7 +61,7 @@ public abstract partial class Animal : LifeForm
 		playSound();
 
 		Random r = new Random();
-        randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0,1000));
+        randomPosition = new Vector(r.NextInt64(-1000, 1000), r.NextInt64(-1000,1000));
     }
 
 	public Waste Poop()
@@ -103,27 +103,24 @@ public abstract partial class Animal : LifeForm
 		foodSound.Play(); 
 	}
 
-    public Point DefineTarget(ObservableCollection<GameObject> objects)
-    {
+    public void Move(ObservableCollection<GameObject> objects)
+	{
         foreach (GameObject obj in objects)
         {
-            if((this is Carnivore & (obj is Herbivore | obj is Meat)) | (this is Herbivore && obj is Plant))
-			{
-				if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
-				{
-					return obj.Location;
-				}
-            } 
-        }
-		Random r = new Random();
-		return randomPosition;
-    }
+            if ((this is Carnivore && (obj is Herbivore | obj is Meat)) | (this is Herbivore && obj is Plant))
+            {
 
-    public void Move(Point target)
-	{
-		Vector direction = target-Location;
-		if (Math.Abs(direction.X) < 1 | Math.Abs(direction.Y) < 1) return;
-		Location += direction.Normalize()*Speed;
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
+                {
+                    Vector direction = obj.Location - Location;
+                    if (direction.Length < 10) return;
+                    Location += direction.Normalize() * Speed;
+					return;
+                }
+            }
+        }
+        
+        Location += randomPosition.Normalize()*Speed;
     }
 
 	public abstract Animal GiveBirth();
@@ -134,7 +131,7 @@ public abstract partial class Animal : LifeForm
 		if(Ticks % 100 == 0)
 		{
 			Random r = new Random();
-            randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0, 1000));
+            randomPosition = new Vector(r.NextInt64(-1000, 1000), r.NextInt64(-1000, 1000));
         }
     }
 }

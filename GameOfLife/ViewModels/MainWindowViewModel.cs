@@ -32,14 +32,14 @@ public partial class MainWindowViewModel : GameBase
             if (obj is Carnivore)
             {
                 Carnivore animal = (Carnivore) obj;
-                animal.Move(animal.DefineTarget(GameObjects));
+                animal.Move(GameObjects);
 
                 if (CurrentTick % 25 == 0) animal.eat(GameObjects);
             }
             else if (obj is Herbivore)
             {
                 Herbivore animal = (Herbivore)obj;
-                animal.Move(animal.DefineTarget(GameObjects));
+                animal.Move(GameObjects);
 
                 // TO-DO: il faut utiliser les ticks propres de chaque animal
                 if (CurrentTick % 25 == 0) animal.eat(GameObjects);
