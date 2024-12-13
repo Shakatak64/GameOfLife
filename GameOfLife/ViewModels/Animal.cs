@@ -37,6 +37,12 @@ public abstract partial class Animal : LifeForm
 	[ObservableProperty]
 	private string soundPath;
 
+	[ObservableProperty]
+	private bool pregnant = false;
+
+    [ObservableProperty]
+	private string text = "";
+
     public SoundPlayer sound;
 
 	private Point randomPosition;
@@ -70,20 +76,7 @@ public abstract partial class Animal : LifeForm
 		return new Waste(Location);
 	}
 
-    public void HaveSxx(LifeForm with)
-    {
-        if (with is Animal)
-		{
-			Animal withAnimal = (Animal) with;
-            if (withAnimal.Gender != Gender)
-			{
-				if(CanReproduce() && withAnimal.CanReproduce())
-				{
-					NextBirth = base.counter + ReproductionTime;
-				}
-			}
-		}
-    }
+   
 
 	public bool CanReproduce()
 	{
@@ -92,7 +85,7 @@ public abstract partial class Animal : LifeForm
 
 	public bool CanGiveBirth()
 	{
-		return base.counter == NextBirth & Gender == Gender.FEMALE;
+		return base.counter == NextBirth & Gender == Gender.FEMALE & Pregnant;
 	}
 
 	public void playSound()
@@ -109,23 +102,55 @@ public abstract partial class Animal : LifeForm
 		Point target = randomPosition;
         foreach (GameObject obj in objects)
         {
-            if ((this is Carnivore & (obj is Herbivore | obj is Meat)) | (this is Herbivore && obj is Plant))
-            {
-                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
-                {
-                    target =  obj.Location;
-                }
-            }
+			if (obj is Animal)
+			{
+				Animal an = (Animal)obj;
+
+				if ((this is Carnivore & (an is Herbivore | (an is Meat && (Health < maxHealth | Energy < maxEnergy)))) | (this is Herbivore && an is Plant && (Health < maxHealth | Energy < maxEnergy)) | (this is Herbivore && an is Herbivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender ) | (this is Carnivore && an is Carnivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender))
+				{
+					if (Math.Pow(an.Location.X - Location.X, 2) + Math.Pow(an.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
+					{
+						target = an.Location;
+					}
+				}
+			}
         }
         Vector direction = target - Location;
         if (Math.Abs(direction.X) < 1 | Math.Abs(direction.Y) < 1) return;
         Location += direction.Normalize() * Speed;
     }
 
+	public void HaveSxx(ObservableCollection<GameObject> objects)
+    {
+        
+        foreach (GameObject obj in objects)
+        {
+            if ((this is Carnivore && obj is Carnivore) | (this is Herbivore && obj is Herbivore))
+            {
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
+                {
+                    Animal withAnimal = (Animal) obj;
+                    if (withAnimal.Gender != Gender)
+                    {
+                        if (CanReproduce() && withAnimal.CanReproduce())
+                        {
+                            NextBirth = base.counter + ReproductionTime;
+							if(Gender == Gender.FEMALE) Pregnant = true;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+
     public abstract Animal GiveBirth();
+
 
 	public override void Tick()
     {
+		counter++;
+		Text = String.Format("Can reproduce: {0}\nPregnant: {1}\nGender: {2}", CanReproduce(), Pregnant, Gender);
         base.Tick();
 		if(Ticks % 100 == 0)
 		{

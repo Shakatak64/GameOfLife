@@ -45,7 +45,8 @@ public partial class Carnivore : Animal
 
     public override Animal GiveBirth()
 	{
-		Random r = new Random();
+        Pregnant = false;
+        Random r = new Random();
 		if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
 		else return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, SoundPath);
 	}

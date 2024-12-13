@@ -64,18 +64,24 @@
 				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Herbivore}">
-				<Image Width="64" Height="64" Source="/Assets/sheep.png">
-					<Image.RenderTransform>
-						<TranslateTransform X="-32" Y="-32" />
-					</Image.RenderTransform>
-				</Image>
+				<Canvas>
+					<Image Width="64" Height="64" Source="/Assets/sheep.png">
+						<Image.RenderTransform>
+							<TranslateTransform X="-32" Y="-32" />
+						</Image.RenderTransform>
+					</Image>
+					<TextBlock Text="{Binding Text}"/>
+				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Carnivore}">
-				<Image Width="64" Height="64" Source="/Assets/wolf.png">
-					<Image.RenderTransform>
-						<TranslateTransform X="-32" Y="-32" />
-					</Image.RenderTransform>
-				</Image>
+				<Canvas>
+					<Image Width="64" Height="64" Source="/Assets/wolf.png">
+						<Image.RenderTransform>
+							<TranslateTransform X="-32" Y="-32" />
+						</Image.RenderTransform>
+					</Image>
+					<TextBlock Text="{Binding Text}"/>
+				</Canvas>
 			</DataTemplate>
 			
 		</ItemsControl.DataTemplates>

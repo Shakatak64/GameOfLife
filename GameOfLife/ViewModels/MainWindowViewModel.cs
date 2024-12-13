@@ -36,9 +36,9 @@ public partial class MainWindowViewModel : GameBase
             }
         }
 
-        //GameObjects.Add(new Plant(new Point(120, 600), 100, 100, 100, 100));
-        //GameObjects.Add(new Herbivore(new Point(700, 600), 50, 100, 500, 100, Gender.MALE, 100, @"..\..\..\Assets\sheep.wav"));
-        //GameObjects.Add(new Carnivore(new Point(200, 0), 100, 100, 1000, 100, Gender.MALE, 100, @"..\..\..\Assets\wolf.wav"));
+        GameObjects.Add(new Plant(new Point(120, 600), 100, 100, 100, 100));
+        GameObjects.Add(new Herbivore(new Point(700, 600), 50, 100, 500, 100, Gender.FEMALE, 100, @"..\..\..\Assets\sheep.wav"));
+        GameObjects.Add(new Carnivore(new Point(200, 0), 100, 100, 1000, 100, Gender.FEMALE, 100, @"..\..\..\Assets\wolf.wav"));
     }
 
     protected override void Tick()
@@ -50,13 +50,22 @@ public partial class MainWindowViewModel : GameBase
             {
                 Carnivore animal = (Carnivore) obj;
                 animal.Move(GameObjects);
+                animal.HaveSxx(GameObjects);
+                if (animal.CanGiveBirth()) GameObjects.Add(animal.GiveBirth());
 
                 if (CurrentTick % 25 == 0) animal.eat(GameObjects);
+                if (animal.Health < 1)
+                {
+                    GameObjects.Remove(animal);
+                    GameObjects.Add(new Meat(animal.Location));
+                }
             }
             else if (obj is Herbivore)
             {
                 Herbivore animal = (Herbivore)obj;
                 animal.Move(GameObjects);
+                animal.HaveSxx(GameObjects);
+                if (animal.CanGiveBirth()) GameObjects.Add(animal.GiveBirth());
 
                 // TO-DO: il faut utiliser les ticks propres de chaque animal
                 if (CurrentTick % 25 == 0) animal.eat(GameObjects);

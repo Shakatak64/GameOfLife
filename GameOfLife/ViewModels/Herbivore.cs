@@ -39,6 +39,7 @@ public partial class Herbivore : Animal
 
     public override Animal GiveBirth()
     {
+        Pregnant = true;
         Random r = new Random();
         if (r.Next() == 0) return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
         else return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, SoundPath);
