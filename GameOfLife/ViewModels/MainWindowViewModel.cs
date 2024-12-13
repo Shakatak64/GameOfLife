@@ -81,11 +81,6 @@ public partial class MainWindowViewModel : GameBase
                 }
             }
         }
-
-        if(CurrentTick % 25 == 0)
-        {
-            GameObjects.Add(new Waste(new Avalonia.Point(r.NextInt64(0,1000), r.NextInt64(0,1000))));
-        }
     }
 
     public void addLifeForm(LifeForm lifeForm)
