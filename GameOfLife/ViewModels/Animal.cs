@@ -150,7 +150,7 @@ public abstract partial class Animal : LifeForm
 	public override void Tick()
     {
 		counter++;
-		Text = String.Format("Can reproduce: {0}\nPregnant: {1}\nGender: {2}", CanReproduce(), Pregnant, Gender);
+		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
         base.Tick();
 		if(Ticks % 100 == 0)
 		{
