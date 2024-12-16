@@ -76,7 +76,7 @@ public abstract partial class Animal : LifeForm
 		return new Waste(Location);
 	}
 
-   
+	public abstract void eat(ObservableCollection<GameObject> objects);
 
 	public bool CanReproduce()
 	{
@@ -148,11 +148,25 @@ public abstract partial class Animal : LifeForm
 
 
 	public override void Tick(ObservableCollection<GameObject> objects)
-    {
+	{
+		base.Tick(objects);
 		counter++;
 		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
-        base.Tick(objects);
-		if(Ticks % 100 == 0)
+
+        Move(objects);
+        HaveSxx(objects);
+
+        if (CanGiveBirth()) objects.Add(GiveBirth());
+
+        if (Ticks % 25 == 0) eat(objects);
+
+        if (Health < 1)
+        {
+            objects.Remove(this);
+            objects.Add(new Meat(Location));
+        }
+
+        if (Ticks % 100 == 0)
 		{
 			Random r = new Random();
             randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0, 1000));
