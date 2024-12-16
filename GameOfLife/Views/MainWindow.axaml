@@ -78,7 +78,6 @@
 							<TranslateTransform X="-32" Y="-32" />
 						</Image.RenderTransform>
 					</Image>
-					<TextBlock Text="{Binding Text}"/>
 					<ProgressBar Height="10" Minimum="0" Maximum="100" Value="{Binding Health,Mode=OneWay}" Foreground="Red" ShowProgressText="False">
 						<ProgressBar.RenderTransform>
 							<TransformGroup>
@@ -96,7 +95,6 @@
 							<TranslateTransform X="-32" Y="-32" />
 						</Image.RenderTransform>
 					</Image>
-					<TextBlock Text="{Binding Text}"/>
 					<ProgressBar Height="10" Minimum="0" Maximum="100" Value="{Binding Health,Mode=OneWay}" Foreground="Red" ShowProgressText="False">
 						<ProgressBar.RenderTransform>
 							<TransformGroup>
