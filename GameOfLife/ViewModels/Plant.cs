@@ -39,19 +39,23 @@ public partial class Plant : LifeForm {
         {
             decreaseEnergy(1);
         }
-        if (base.Ticks % 1000 == 0) // very slow
+        if (base.Ticks % 250 == 0) // very slow
         {
             grow();
         }
+        if (base.Ticks % 500 == 0) // very slow
+        {
+            Reproduce(GameObjects);
+        }
     }
 
-    public Plant Reproduce()
+    public void Reproduce(ObservableCollection<GameObject> objects)
     {
         Random rng = new();
         double radius = rng.NextDouble() * SeedRadius;
         double angle = rng.NextDouble() * 2*Math.PI;
         Point location = new Point(Location.X+radius*Math.Cos(angle), Location.Y+radius*Math.Sin(angle));
-        return new Plant(location, 100, 100, 1, 10);
+        objects.Add(new Plant(location, 100, 100, 100, 150));
     }
 
     private void grow()
