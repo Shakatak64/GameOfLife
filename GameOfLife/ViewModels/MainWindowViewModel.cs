@@ -27,7 +27,7 @@ public partial class MainWindowViewModel : GameBase
         }
         for(int i = 0; i < 20; i++)
         {
-            GameObjects.Add(new Plant(new Point(r.NextInt64(1000), r.NextInt64(1000)), 100, 100, 100, 100));
+            GameObjects.Add(new Plant(new Point(r.NextInt64(1000), r.NextInt64(1000)), 100, 100, 100, 150));
         }
         for(int i = 0; i < 2; i++)
         {

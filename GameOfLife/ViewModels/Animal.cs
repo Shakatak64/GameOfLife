@@ -40,20 +40,12 @@ public abstract partial class Animal : LifeForm
 	[ObservableProperty]
 	private bool pregnant = false;
 
-    [ObservableProperty]
-	private string text = "";
-
     public SoundPlayer sound;
 
 	private Point randomPosition;
 
 	private string foodSoundPath = @"..\..\..\Assets\food.wav";
 	private SoundPlayer foodSound;
-
-
-
-
-
 
     public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
@@ -157,7 +149,6 @@ public abstract partial class Animal : LifeForm
 	public override void Tick(ObservableCollection<GameObject> objects)
 	{
 		base.Tick(objects);
-		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
 
         Move(objects);
         HaveSxx(objects);
