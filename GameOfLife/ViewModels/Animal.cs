@@ -147,11 +147,11 @@ public abstract partial class Animal : LifeForm
     public abstract Animal GiveBirth();
 
 
-	public override void Tick()
+	public override void Tick(ObservableCollection<GameObject> objects)
     {
 		counter++;
 		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
-        base.Tick();
+        base.Tick(objects);
 		if(Ticks % 100 == 0)
 		{
 			Random r = new Random();

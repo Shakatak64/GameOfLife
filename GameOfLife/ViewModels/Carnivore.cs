@@ -45,7 +45,7 @@ public partial class Carnivore : Animal
 
     public override void Tick(ObservableCollection<GameObject> objects)
     {
-        base.Tick();
+        base.Tick(objects);
 
         Move(objects);
         HaveSxx(objects);

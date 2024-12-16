@@ -39,7 +39,7 @@ public partial class Herbivore : Animal
 
     public override void Tick(ObservableCollection<GameObject> objects)
     {
-        base.Tick();
+        base.Tick(objects);
 
         Move(objects);
         HaveSxx(objects);
