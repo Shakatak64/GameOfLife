@@ -45,7 +45,7 @@ public partial class MainWindowViewModel : GameBase
     {
         foreach (GameObject obj in GameObjects.ToList())
         {
-            obj.Tick();
+            obj.Tick(GameObjects);
             if (obj is Carnivore)
             {
                 Carnivore animal = (Carnivore) obj;
@@ -74,19 +74,6 @@ public partial class MainWindowViewModel : GameBase
                     GameObjects.Add(new Meat(animal.Location));
                 }
 
-            }
-            else if (obj is Plant)
-            {
-               
-            }
-            else if (obj is Meat)
-            {
-                Meat meat = (Meat)obj;
-                if (meat.Ticks > 500)
-                {
-                    GameObjects.Remove(meat);
-                    GameObjects.Add(new Waste(meat.Location));
-                }
             }
         }
     }
