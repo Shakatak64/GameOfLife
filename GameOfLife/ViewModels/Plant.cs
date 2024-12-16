@@ -27,9 +27,14 @@ public partial class Plant : LifeForm {
         this.seedRenderDelta = -seedRadius / 2 + 3;
     }
 
-    public override void Tick()
+    public override void Tick(ObservableCollection<GameObject> GameObjects)
     {
         base.Ticks++;
+        eat(GameObjects);
+        if (Health < 1)
+        {
+            GameObjects.Remove(this);
+        }
         if (base.Ticks % 1000 == 0) // very slow
         {
             grow();
