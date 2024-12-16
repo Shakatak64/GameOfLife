@@ -45,54 +45,7 @@ public partial class MainWindowViewModel : GameBase
     {
         foreach (GameObject obj in GameObjects.ToList())
         {
-            obj.Tick();
-            if (obj is Carnivore)
-            {
-                Carnivore animal = (Carnivore) obj;
-                animal.Move(GameObjects);
-                animal.HaveSxx(GameObjects);
-                if (animal.CanGiveBirth()) GameObjects.Add(animal.GiveBirth());
-
-                if (CurrentTick % 25 == 0) animal.eat(GameObjects);
-                if (animal.Health < 1)
-                {
-                    GameObjects.Remove(animal);
-                    GameObjects.Add(new Meat(animal.Location));
-                }
-            }
-            else if (obj is Herbivore)
-            {
-                Herbivore animal = (Herbivore)obj;
-                animal.Move(GameObjects);
-                animal.HaveSxx(GameObjects);
-                if (animal.CanGiveBirth()) GameObjects.Add(animal.GiveBirth());
-
-                // TO-DO: il faut utiliser les ticks propres de chaque animal
-                if (CurrentTick % 25 == 0) animal.eat(GameObjects);
-                if (animal.Health < 1) {
-                    GameObjects.Remove(animal);
-                    GameObjects.Add(new Meat(animal.Location));
-                }
-
-            }
-            else if (obj is Plant)
-            {
-                Plant plant = (Plant)obj;
-                plant.eat(GameObjects);
-                if (plant.Health < 1)
-                {
-                    GameObjects.Remove(plant);
-                }
-            }
-            else if (obj is Meat)
-            {
-                Meat meat = (Meat)obj;
-                if (meat.Ticks > 500)
-                {
-                    GameObjects.Remove(meat);
-                    GameObjects.Add(new Waste(meat.Location));
-                }
-            }
+            obj.Tick(GameObjects);
         }
     }
 

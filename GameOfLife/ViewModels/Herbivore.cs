@@ -37,6 +37,22 @@ public partial class Herbivore : Animal
         }
     }
 
+    public override void Tick(ObservableCollection<GameObject> objects)
+    {
+        base.Tick();
+
+        Move(objects);
+        HaveSxx(objects);
+        if (CanGiveBirth()) objects.Add(GiveBirth());
+
+        if (Ticks % 25 == 0) eat(objects);
+        if (Health < 1)
+        {
+            objects.Remove(this);
+            objects.Add(new Meat(Location));
+        }
+    }
+
     public override Animal GiveBirth()
     {
         Pregnant = true;
