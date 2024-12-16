@@ -47,16 +47,7 @@ public abstract partial class Animal : LifeForm
 	private string foodSoundPath = @"..\..\..\Assets\food.wav";
 	private SoundPlayer foodSound;
 
-<<<<<<< HEAD
 	private Random r;
-
-
-
-
-
-
-=======
->>>>>>> 87cdf2d93d7ea4d5fcb35f234b2196d2ad1dbfb6
     public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
         this.speed = speed;
