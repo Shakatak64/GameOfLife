@@ -50,6 +50,8 @@ public abstract partial class Animal : LifeForm
 	private string foodSoundPath = @"..\..\..\Assets\food.wav";
 	private SoundPlayer foodSound;
 
+	private Random r;
+
 
 
 
@@ -67,7 +69,8 @@ public abstract partial class Animal : LifeForm
 		foodSound = new SoundPlayer(foodSoundPath);
 		playSound();
 
-		Random r = new Random();
+		r = new Random();
+		Ticks+=r.Next(0, 50);
         randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0,1000));
     }
 
@@ -182,6 +185,10 @@ public abstract partial class Animal : LifeForm
 			Random r = new Random();
             randomPosition = new Point(r.NextInt64(0, 1000), r.NextInt64(0, 1000));
         }
+		if(Ticks % 150 == 0)
+		{
+			objects.Add(Poop());
+		}
     }
 }
 
