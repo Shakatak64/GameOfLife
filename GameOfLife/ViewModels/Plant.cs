@@ -35,6 +35,10 @@ public partial class Plant : LifeForm {
         {
             GameObjects.Remove(this);
         }
+        if(Ticks%100 == 0)
+        {
+            decreaseEnergy(1);
+        }
         if (base.Ticks % 1000 == 0) // very slow
         {
             grow();

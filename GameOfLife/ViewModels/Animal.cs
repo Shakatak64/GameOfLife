@@ -80,12 +80,12 @@ public abstract partial class Animal : LifeForm
 
 	public bool CanReproduce()
 	{
-		return base.counter > NextBirth; 
+		return Ticks > NextBirth; 
 	}
 
 	public bool CanGiveBirth()
 	{
-		return base.counter == NextBirth & Gender == Gender.FEMALE & Pregnant;
+		return Ticks == NextBirth & Gender == Gender.FEMALE & Pregnant;
 	}
 
 	public void playSound()
@@ -102,11 +102,18 @@ public abstract partial class Animal : LifeForm
 		Point target = randomPosition;
         foreach (GameObject obj in objects)
         {
-			if (obj is Animal)
+			if(((obj is Meat & this is Carnivore) | (obj is Plant & this is Herbivore)) & Energy < maxEnergy)
+			{
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
+                {
+                    target = obj.Location;
+                }
+            }
+			else if (obj is Animal)
 			{
 				Animal an = (Animal)obj;
 
-				if ((this is Carnivore & (an is Herbivore | (an is Meat && (Health < maxHealth | Energy < maxEnergy)))) | (this is Herbivore && an is Plant && (Health < maxHealth | Energy < maxEnergy)) | (this is Herbivore && an is Herbivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender ) | (this is Carnivore && an is Carnivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender))
+				if ((this is Carnivore & an is Herbivore) | (this.GetType == an.GetType && CanReproduce() && an.CanReproduce() && an.Gender != Gender ))
 				{
 					if (Math.Pow(an.Location.X - Location.X, 2) + Math.Pow(an.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
 					{
@@ -134,7 +141,7 @@ public abstract partial class Animal : LifeForm
                     {
                         if (CanReproduce() && withAnimal.CanReproduce())
                         {
-                            NextBirth = base.counter + ReproductionTime;
+                            NextBirth = Ticks + ReproductionTime;
 							if(Gender == Gender.FEMALE) Pregnant = true;
                         }
                     }
@@ -150,7 +157,6 @@ public abstract partial class Animal : LifeForm
 	public override void Tick(ObservableCollection<GameObject> objects)
 	{
 		base.Tick(objects);
-		counter++;
 		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
 
         Move(objects);
@@ -164,6 +170,11 @@ public abstract partial class Animal : LifeForm
         {
             objects.Remove(this);
             objects.Add(new Meat(Location));
+        }
+
+		if(Ticks%10 == 0)
+		{
+            decreaseEnergy(1);
         }
 
         if (Ticks % 100 == 0)

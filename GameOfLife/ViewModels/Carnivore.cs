@@ -11,6 +11,8 @@ namespace gol.ViewModels;
 public partial class Carnivore : Animal
 {
 
+    private int meatFoodIncrease = 10;
+
 	public Carnivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4 , health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
 	{
 		
@@ -36,7 +38,11 @@ public partial class Carnivore : Animal
                 {
                     Meat meat = (Meat)obj;
                     objects.Remove(meat);
-                    Health += 10;
+                    if(Energy + meatFoodIncrease > maxHealth)
+                    {
+                        Health += meatFoodIncrease - (maxHealth - Health);
+                        Energy = maxEnergy;
+                    } else Energy += meatFoodIncrease;  
                     playEatSound();
                 }
             }
