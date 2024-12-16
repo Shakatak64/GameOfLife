@@ -61,6 +61,14 @@
 							<TranslateTransform X="-32" Y="-32" />
 						</Image.RenderTransform>
 					</Image>
+					<ProgressBar Height="10" Minimum="0" Maximum="100" Value="{Binding Health,Mode=OneWay}" Foreground="Red" ShowProgressText="False">
+						<ProgressBar.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="0.5" ScaleY="1.0"/>
+								<TranslateTransform X="-95" Y="40" />
+							</TransformGroup>
+						</ProgressBar.RenderTransform>
+					</ProgressBar>
 				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Herbivore}">
@@ -71,6 +79,14 @@
 						</Image.RenderTransform>
 					</Image>
 					<TextBlock Text="{Binding Text}"/>
+					<ProgressBar Height="10" Minimum="0" Maximum="100" Value="{Binding Health,Mode=OneWay}" Foreground="Red" ShowProgressText="False">
+						<ProgressBar.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="0.5" ScaleY="1.0"/>
+								<TranslateTransform X="-95" Y="40" />
+							</TransformGroup>
+						</ProgressBar.RenderTransform>
+					</ProgressBar>
 				</Canvas>
 			</DataTemplate>
 			<DataTemplate DataType="{x:Type vm:Carnivore}">
@@ -81,6 +97,14 @@
 						</Image.RenderTransform>
 					</Image>
 					<TextBlock Text="{Binding Text}"/>
+					<ProgressBar Height="10" Minimum="0" Maximum="100" Value="{Binding Health,Mode=OneWay}" Foreground="Red" ShowProgressText="False">
+						<ProgressBar.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="0.5" ScaleY="1.0"/>
+								<TranslateTransform X="-95" Y="40" />
+							</TransformGroup>
+						</ProgressBar.RenderTransform>
+					</ProgressBar>
 				</Canvas>
 			</DataTemplate>
 			
