@@ -102,11 +102,18 @@ public abstract partial class Animal : LifeForm
 		Point target = randomPosition;
         foreach (GameObject obj in objects)
         {
-			if (obj is Animal)
+			if(((obj is Meat & this is Carnivore) | (obj is Plant & this is Herbivore)) & Energy < maxEnergy)
+			{
+                if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
+                {
+                    target = obj.Location;
+                }
+            }
+			else if (obj is Animal)
 			{
 				Animal an = (Animal)obj;
 
-				if ((this is Carnivore & (an is Herbivore | (an is Meat && (Health < maxHealth | Energy < maxEnergy)))) | (this is Herbivore && an is Plant && (Health < maxHealth | Energy < maxEnergy)) | (this is Herbivore && an is Herbivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender ) | (this is Carnivore && an is Carnivore && CanReproduce() && an.CanReproduce() && an.Gender != Gender))
+				if ((this is Carnivore & an is Herbivore) | (this.GetType == an.GetType && CanReproduce() && an.CanReproduce() && an.Gender != Gender ))
 				{
 					if (Math.Pow(an.Location.X - Location.X, 2) + Math.Pow(an.Location.Y - Location.Y, 2) <= Math.Pow(VisionRadius, 2))
 					{
