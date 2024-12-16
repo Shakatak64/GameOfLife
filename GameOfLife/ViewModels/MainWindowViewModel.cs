@@ -19,7 +19,7 @@ public partial class MainWindowViewModel : GameBase
     public MainWindowViewModel()
     {
         r = new Random();
-
+        GameObjects.Add(new EntityCounter());
         for(int i = 0; i < 7; i++)
         {
             GameObjects.Add(new Herbivore(new Point(r.NextInt64(1000), r.NextInt64(1000)), 50, 100, 250, 100, Gender.MALE, 100, @"..\..\..\Assets\sheep.wav"));
