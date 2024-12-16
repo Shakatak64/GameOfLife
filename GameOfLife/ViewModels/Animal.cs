@@ -80,12 +80,12 @@ public abstract partial class Animal : LifeForm
 
 	public bool CanReproduce()
 	{
-		return base.counter > NextBirth; 
+		return Ticks > NextBirth; 
 	}
 
 	public bool CanGiveBirth()
 	{
-		return base.counter == NextBirth & Gender == Gender.FEMALE & Pregnant;
+		return Ticks == NextBirth & Gender == Gender.FEMALE & Pregnant;
 	}
 
 	public void playSound()
@@ -134,7 +134,7 @@ public abstract partial class Animal : LifeForm
                     {
                         if (CanReproduce() && withAnimal.CanReproduce())
                         {
-                            NextBirth = base.counter + ReproductionTime;
+                            NextBirth = Ticks + ReproductionTime;
 							if(Gender == Gender.FEMALE) Pregnant = true;
                         }
                     }
@@ -150,7 +150,6 @@ public abstract partial class Animal : LifeForm
 	public override void Tick(ObservableCollection<GameObject> objects)
 	{
 		base.Tick(objects);
-		counter++;
 		Text = String.Format("Health: {0}\nEnergy: {1}\nPregnant: {2}", Health, Energy, Pregnant);
 
         Move(objects);
@@ -164,6 +163,11 @@ public abstract partial class Animal : LifeForm
         {
             objects.Remove(this);
             objects.Add(new Meat(Location));
+        }
+
+		if(Ticks%50 == 0)
+		{
+            decreaseEnergy(15);
         }
 
         if (Ticks % 100 == 0)

@@ -1,5 +1,6 @@
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 
 namespace gol.ViewModels;
@@ -13,8 +14,6 @@ public abstract partial class LifeForm : GameObject {
     public int maxHealth { get; }
     public int maxEnergy { get; }
 
-    protected int counter = 0;
-
     public LifeForm(Point location, int health, int energy) : base(location) {
         this.health = health; 
         this.energy = energy;
@@ -24,8 +23,12 @@ public abstract partial class LifeForm : GameObject {
 
     public void decreaseEnergy(int amount)
     {
-        if(energy > 0) energy -= amount;
-        else health -= amount;
+        if(energy < 1) health -= amount;
+        else if(energy < amount) { 
+            health-= Math.Abs(energy-amount);
+            energy = 0;
+        }
+        else energy -= amount;
     }
 
 }
