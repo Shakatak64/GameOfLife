@@ -172,9 +172,9 @@ public abstract partial class Animal : LifeForm
             objects.Add(new Meat(Location));
         }
 
-		if(Ticks%50 == 0)
+		if(Ticks%10 == 0)
 		{
-            decreaseEnergy(15);
+            decreaseEnergy(1);
         }
 
         if (Ticks % 100 == 0)
