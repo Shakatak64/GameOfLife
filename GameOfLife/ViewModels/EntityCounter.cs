@@ -9,7 +9,7 @@ namespace gol.ViewModels;
 public partial class EntityCounter : GameObject {
 
     [ObservableProperty]
-    public int objectCount = 0;
+    private int objectCount = 0;
 
     public EntityCounter() : base(new Point(0,0)) {
     }

@@ -33,21 +33,19 @@ public abstract partial class Animal : LifeForm
 
 	[ObservableProperty]
 	private int nextBirth = 0;
-
-	[ObservableProperty]
-	private string soundPath;
-
+	
 	[ObservableProperty]
 	private bool pregnant = false;
 
-    public SoundPlayer sound;
-
 	private Point randomPosition;
 
-	private string foodSoundPath = @"..\..\..\Assets\food.wav";
-	private SoundPlayer foodSound;
+    protected string soundPath;
+    private string foodSoundPath = @"..\..\..\Assets\food.wav";
+    private SoundPlayer sound;
+    private SoundPlayer foodSound;
 
 	private Random r;
+
     public Animal(Point location, int speed, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, health, energy)
 	{
         this.speed = speed;
@@ -55,7 +53,7 @@ public abstract partial class Animal : LifeForm
 		this.visionRadius = visionRadius;
 		this.gender = gender;
 		this.reproductionTime = reproductionTime;
-		SoundPath = soundPath;
+        soundPath = soundPath;
 		sound = new SoundPlayer(soundPath);
 		foodSound = new SoundPlayer(foodSoundPath);
 		playSound();
