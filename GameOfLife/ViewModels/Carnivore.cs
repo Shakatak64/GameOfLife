@@ -13,10 +13,10 @@ public partial class Carnivore : Animal
 
     private int meatFoodIncrease = 10;
 
-	public Carnivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4 , health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
-	{
-		
-	}
+    public Carnivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 4, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
+    {
+
+    }
 
 
     public override void eat(ObservableCollection<GameObject> objects)
@@ -38,11 +38,12 @@ public partial class Carnivore : Animal
                 {
                     Meat meat = (Meat)obj;
                     objects.Remove(meat);
-                    if(Energy + meatFoodIncrease > maxHealth)
+                    if (Energy + meatFoodIncrease > maxHealth)
                     {
                         Health += meatFoodIncrease - (maxHealth - Health);
                         Energy = maxEnergy;
-                    } else Energy += meatFoodIncrease;  
+                    }
+                    else Energy += meatFoodIncrease;
                     playEatSound();
                 }
             }
@@ -55,10 +56,10 @@ public partial class Carnivore : Animal
     }
 
     public override Animal GiveBirth()
-	{
+    {
         Pregnant = false;
         Random r = new Random();
-		if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, soundPath);
-		else return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, soundPath);
-	}
+        if (r.Next() == 0) return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
+        else return new Carnivore(Location, 200, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, SoundPath);
+    }
 }

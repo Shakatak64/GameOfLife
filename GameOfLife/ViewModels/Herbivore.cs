@@ -10,11 +10,11 @@ namespace gol.ViewModels;
 
 public partial class Herbivore : Animal
 {
-	
-	public Herbivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 2, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
-	{
-		
-	}
+
+    public Herbivore(Point location, int health, int energy, int visionRadius, int contactRadius, Gender gender, int reproductionTime, string soundPath) : base(location, 2, health, energy, visionRadius, contactRadius, gender, reproductionTime, soundPath)
+    {
+
+    }
 
     public override void eat(ObservableCollection<GameObject> objects)
     {
@@ -46,7 +46,7 @@ public partial class Herbivore : Animal
     {
         Pregnant = true;
         Random r = new Random();
-        if (r.Next() == 0) return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, soundPath);
-        else return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, soundPath);
+        if (r.Next() == 0) return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.MALE, ReproductionTime, SoundPath);
+        else return new Herbivore(Location, 100, 100, VisionRadius, ContactRadius, Gender.FEMALE, ReproductionTime, SoundPath);
     }
 }
