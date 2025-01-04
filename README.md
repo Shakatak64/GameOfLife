@@ -13,7 +13,7 @@ Cette simulation, développée en C# avec AvaloniaUI, vise à modéliser un éco
 * **AvaloniaUI** : Framework UI multiplateforme pour créer l'interface graphique.
 
 **Licence**
-Ce projet est distribué sous licence MIT. (à modifier)
+Ce projet est distribué sous licence MIT.
 
 **Rapport**
 Le rapport demandé se trouve dans [REPORT.md](./REPORT.md)
