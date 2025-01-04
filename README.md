@@ -16,4 +16,4 @@ Cette simulation, développée en C# avec AvaloniaUI, vise à modéliser un éco
 Ce projet est distribué sous licence MIT. (à modifier)
 
 **Rapport**
-Le rapport demandé se trouve dans [./REPORT.md]
+Le rapport demandé se trouve dans [REPORT.md](./REPORT.md)
