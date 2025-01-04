@@ -12,4 +12,4 @@ Diagramme de séquence effectuée à chaque tick pour les animaux
 
 ## Utilisation des principes Solid
 * Open-closed principle : Notre code est constitué de classes pouvant être étendues. Nous avons utilisé l'héritage ce qui nous permet d'étendre les classes génériques. On peut rajouter d'autre espèces d'animaux ainsi que leurs comportements respectifs sans avoir à modifier le reste du code.
-* Liskov Substitution Principle : Nous pouvons traiter les objets d'une classe dérivée comme étant des objets de la classe mère (Exemple: Tous les membres de "animal" ont une fonction "eat" mais elle est implémentée différement en fonction de l'animal)
+* Liskov Substitution Principle : Nous pouvons traiter les objets d'une classe dérivée comme étant des objets de la classe mère (Exemple: Tous les membres de "animal" ont une fonction "eat" mais elle est implémentée différement en fonction de l'animal. C'est pareil pour la fonction "Tick" partagé par tous les gameObject, elle est appelée dans la boucle principale du programme mais chaque object réagira différement)
