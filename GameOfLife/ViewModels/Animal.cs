@@ -127,7 +127,7 @@ public abstract partial class Animal : LifeForm
 
         foreach (GameObject obj in objects)
         {
-            if ((this is Carnivore && obj is Carnivore) | (this is Herbivore && obj is Herbivore))
+            if (this.GetType == obj.GetType)
             {
                 if (Math.Pow(obj.Location.X - Location.X, 2) + Math.Pow(obj.Location.Y - Location.Y, 2) <= Math.Pow(ContactRadius, 2))
                 {
